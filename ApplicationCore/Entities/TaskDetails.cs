@@ -10,6 +10,7 @@ namespace ApplicationCore.Entities
         public int StatusId { get; set; }
         public int TypeId { get; set; }
         public string Description { get; set; }
+        public int TaskId { get; set; }
 
         public TaskStatus Status { get; set; }
         public TaskType Type { get; set; }

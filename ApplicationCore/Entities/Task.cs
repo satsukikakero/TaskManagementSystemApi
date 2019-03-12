@@ -9,7 +9,6 @@ namespace ApplicationCore.Entities
         public int Id { get; set; }
         public DateTime CreateDate { get; set; }
         public DateTime RequiredByDate { get; set; }
-        public int TaskDetailsId { get; set; }
 
         public TaskDetails TaskDetails { get; set; }
     }

@@ -9,6 +9,6 @@ namespace ApplicationCore.Entities
         public int Id { get; set; }
         public string Name { get; set; }
 
-        ICollection<TaskDetails> TaskDetails { get; set; }
+        public ICollection<TaskDetails> TaskDetails { get; set; }
     }
 }

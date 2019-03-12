@@ -9,6 +9,6 @@ namespace ApplicationCore.Entities
         public int Id { get; set; }
         public string Type { get; set; }
 
-        ICollection<Comment> Comments { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }
