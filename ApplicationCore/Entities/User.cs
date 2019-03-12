@@ -8,5 +8,7 @@ namespace ApplicationCore.Entities
     public class User: IdentityUser
     {
         public string Password { get; set; }
+
+        public ICollection<UserTask> UserTasks { get; set; }
     }
 }

@@ -11,5 +11,7 @@ namespace ApplicationCore.Entities
         public DateTime RequiredByDate { get; set; }
 
         public TaskDetails TaskDetails { get; set; }
+        public ICollection<UserTask> UserTasks { get; set; }
+        public ICollection<Comment> Comments { get; set; }
     }
 }

@@ -27,6 +27,26 @@ namespace Infrastructure
             builder.Entity<TaskType>()
                 .HasKey(k => k.Id);
 
+            builder.Entity<Comment>()
+                .Property(c => c.CommentText)
+                .IsRequired();
+
+            builder.Entity<CommentType>()
+                .Property(ct => ct.Type)
+                .IsRequired();
+
+            builder.Entity<TaskDetails>()
+                .Property(td => td.Description)
+                .IsRequired();
+
+            builder.Entity<TaskStatus>()
+                .Property(ts => ts.Name)
+                .IsRequired();
+
+            builder.Entity<TaskType>()
+                .Property(tt => tt.Name)
+                .IsRequired();
+
             builder.Entity<TaskDetails>()
                 .HasOne<TaskType>(td => td.Type)
                 .WithMany(tt => tt.TaskDetails)
@@ -41,6 +61,32 @@ namespace Infrastructure
                 .HasOne<TaskDetails>(t => t.TaskDetails)
                 .WithOne(td => td.Task)
                 .HasForeignKey<TaskDetails>(td => td.TaskId);
+
+            builder.Entity<UserTask>()
+                .HasKey(ut => new { ut.UserId, ut.TaskId });
+
+            builder.Entity<UserTask>()
+                .HasOne<User>(ut => ut.User)
+                .WithMany(u => u.UserTasks)
+                .HasForeignKey(ut => ut.UserId);
+
+            builder.Entity<UserTask>()
+                .HasOne<Task>(ut => ut.Task)
+                .WithMany(t => t.UserTasks)
+                .HasForeignKey(ut => ut.TaskId);
+
+            builder.Entity<CommentType>()
+                .HasKey(ct => ct.Id);
+
+            builder.Entity<Comment>()
+                .HasOne<CommentType>(c => c.CommentType)
+                .WithMany(ct => ct.Comments)
+                .HasForeignKey(c => c.CommentTypeId);
+
+            builder.Entity<Comment>()
+                .HasOne<Task>(c => c.Task)
+                .WithMany(t => t.Comments)
+                .HasForeignKey(c => c.TaskId);
 
             base.OnModelCreating(builder);
         }
