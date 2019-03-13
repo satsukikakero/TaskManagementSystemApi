@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ApplicationCore.Entities
 {
-    public class UserTask
+    public class UserTask: IEntity
     {
         public string UserId { get; set; }
         public User User { get; set; }

@@ -3,10 +3,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using TMSApi.ModelMappers;
 
 namespace TMSApi.ApiModels
 {
-    public class ApiTask
+    public class ApiTask: IApiModel
     {
         public string Description { get; set; }
         public string Status { get; set; }

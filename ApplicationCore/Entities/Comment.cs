@@ -4,7 +4,7 @@ using System.Text;
 
 namespace ApplicationCore.Entities
 {
-    public class Comment
+    public class Comment: IEntity
     {
         public int Id { get; set; }
         public string CommentText { get; set; }
