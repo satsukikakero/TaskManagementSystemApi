@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using ApplicationCore.Entities;
+using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -35,6 +36,10 @@ namespace TMSApi
             services.AddDbContext<Infrastructure.DbContext>(options => options.UseSqlServer(@"Server=.;Database=TMS;Trusted_Connection=True;MultipleActiveResultSets=true"));
 
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Infrastructure.DbContext>();
+            services.AddScoped<ITaskRepository, TaskRepository>();
+            services.AddScoped<ICommentRepository, CommentRepository>();
+            services.AddScoped<IUserRepository, UserRepository>();
+            services.AddScoped<IUserTaskRepository, UserTaskRepository>();
             services.AddHttpContextAccessor();
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));

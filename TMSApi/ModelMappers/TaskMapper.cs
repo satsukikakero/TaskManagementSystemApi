@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,7 +32,7 @@ namespace TMSApi.ModelMappers
                 RequestByDate = Model.RequiredByDate,
                 Status = Model.TaskDetails.Status.Name,
                 Type = Model.TaskDetails.Type.Name,
-                AssignedTo = _taskRepository.GetAllAssigniesForTaskById(Model.Id),
+                AssignedTo = _taskRepository.GetAllAssigniesForTask(Model).ToList(),
                 NextActionDate = _commentRepository.GetFirstCommentWithReminderDateForGivenTask(Model.Id)
             };
         }
