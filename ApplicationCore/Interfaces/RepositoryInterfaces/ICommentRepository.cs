@@ -9,5 +9,6 @@ namespace ApplicationCore.Interfaces.RepositoryInterfaces
     {
         IEnumerable<CommentType> GetCommentTypes();
         IEnumerable<Comment> GetAllCommentForTask(Task task);
+        DateTime? GetFirstCommentWithReminderDateForGivenTask(int id);
     }
 }

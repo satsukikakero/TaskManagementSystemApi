@@ -34,7 +34,7 @@ namespace TMSApi.ModelMappers
                 Status = Model.TaskDetails.Status.Name,
                 Type = Model.TaskDetails.Type.Name,
                 AssignedTo = _taskRepository.GetAllAssigniesForTask(Model).ToList(),
-                NextActionDate = _commentRepository.GetFirstCommentWithReminderDateForGivenTask(Model.Id)
+                NextActionDate = _commentRepository.GetFirstCommentWithReminderDateForGivenTask(Model.Id).Value
             };
         }
     }

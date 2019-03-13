@@ -25,5 +25,11 @@ namespace Infrastructure.Repositories
         {
             return _context.CommentTypes.ToList();
         }
+
+        public DateTime? GetFirstCommentWithReminderDateForGivenTask(int id)
+        {
+            Comment comment = _context.Comments.Where(comm => comm.Task.Id == id && comm.ReminderDate.HasValue).FirstOrDefault();
+            return comment?.ReminderDate.Value;
+        }
     }
 }

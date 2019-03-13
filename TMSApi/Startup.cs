@@ -1,5 +1,8 @@
 ﻿using System.Text;
 using ApplicationCore.Entities;
+using ApplicationCore.Interfaces.RepositoryInterfaces;
+using ApplicationCore.Interfaces.ServiceInterfaces;
+using ApplicationCore.Services;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -38,8 +41,11 @@ namespace TMSApi
             services.AddIdentity<User, IdentityRole>().AddEntityFrameworkStores<Infrastructure.DbContext>();
             services.AddScoped<ITaskRepository, TaskRepository>();
             services.AddScoped<ICommentRepository, CommentRepository>();
-            services.AddScoped<IUserRepository, UserRepository>();
             services.AddScoped<IUserTaskRepository, UserTaskRepository>();
+            services.AddScoped<ITaskService, TaskService>();
+            services.AddScoped<ICommentService, CommentService>();
+            services.AddScoped<IUserService, UserService>();
+            services.AddScoped<IUserTaskService, UserTaskService>();
             services.AddHttpContextAccessor();
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
