@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories
 
         public TaskRepository(DbContext context) : base(context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public IEnumerable<User> GetAllAssigniesForTask(Task task)

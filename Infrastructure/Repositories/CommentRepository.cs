@@ -13,7 +13,7 @@ namespace Infrastructure.Repositories
 
         public CommentRepository(DbContext context) : base(context)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
         public IEnumerable<Comment> GetAllCommentForTask(Task task)

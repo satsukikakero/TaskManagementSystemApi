@@ -1,4 +1,5 @@
 ﻿using ApplicationCore.Entities;
+using ApplicationCore.Interfaces.RepositoryInterfaces;
 using Infrastructure.Repositories;
 using System;
 using System.Collections.Generic;
