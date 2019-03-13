@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Repositories
+namespace ApplicationCore.Interfaces.RepositoryInterfaces
 {
     public interface ITaskRepository: IRepository<Task>
     {
