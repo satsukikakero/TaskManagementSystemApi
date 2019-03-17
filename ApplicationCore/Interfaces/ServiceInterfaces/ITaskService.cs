@@ -14,5 +14,7 @@ namespace ApplicationCore.Interfaces.ServiceInterfaces
         IEnumerable<TaskType> GetAllTaskTypes();
         IEnumerable<TaskStatus> GetTaskStatuses();
         IEnumerable<User> GetAllAssigniesForTask(Task task);
+        IEnumerable<Task> GetAllEager();
+        Task GetByIdEager(int id);
     }
 }

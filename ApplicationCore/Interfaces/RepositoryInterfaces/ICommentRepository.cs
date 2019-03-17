@@ -8,7 +8,7 @@ namespace ApplicationCore.Interfaces.RepositoryInterfaces
     public interface ICommentRepository: IRepository<Comment>
     {
         IEnumerable<CommentType> GetCommentTypes();
-        IEnumerable<Comment> GetAllCommentForTask(Task task);
+        IEnumerable<Comment> GetAllCommentForTask(int id);
         DateTime? GetFirstCommentWithReminderDateForGivenTask(int id);
     }
 }

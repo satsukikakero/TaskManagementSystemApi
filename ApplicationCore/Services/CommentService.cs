@@ -31,9 +31,9 @@ namespace ApplicationCore.Services
             return _commentRepository.GetAll();
         }
 
-        public IEnumerable<Comment> GetAllCommentForTask(Task task)
+        public IEnumerable<Comment> GetAllCommentForTask(int id)
         {
-            return _commentRepository.GetAllCommentForTask(task);
+            return _commentRepository.GetAllCommentForTask(id);
         }
 
         public Comment GetById(int id)

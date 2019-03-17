@@ -3,6 +3,7 @@ using ApplicationCore.Interfaces.RepositoryInterfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace Infrastructure.Repositories
@@ -16,9 +17,12 @@ namespace Infrastructure.Repositories
             _context = context ?? throw new ArgumentNullException(nameof(context));
         }
 
-        public IEnumerable<Comment> GetAllCommentForTask(Task task)
+        public IEnumerable<Comment> GetAllCommentForTask(int id)
         {
-            return _context.Comments.Where(comment => comment.Task.Equals(task)).ToList();
+            return _context.Comments
+                .Where(comment => comment.TaskId == id)
+                .Include(comment => comment.CommentType)
+                .ToList();
         }
 
         public IEnumerable<CommentType> GetCommentTypes()

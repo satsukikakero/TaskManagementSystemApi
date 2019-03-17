@@ -13,6 +13,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
+using TMSApi.ModelMappers;
 
 namespace TMSApi
 {
@@ -46,6 +47,8 @@ namespace TMSApi
             services.AddScoped<ICommentService, CommentService>();
             services.AddScoped<IUserService, UserService>();
             services.AddScoped<IUserTaskService, UserTaskService>();
+            services.AddScoped<TaskMapper, TaskMapper>();
+            services.AddScoped<CommentMapper, CommentMapper>();
             services.AddHttpContextAccessor();
 
             var signingKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes("this is the secret phrase"));
@@ -74,6 +77,7 @@ namespace TMSApi
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
+            app.UseAuthentication();
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

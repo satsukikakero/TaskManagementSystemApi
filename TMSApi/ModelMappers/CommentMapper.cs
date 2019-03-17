@@ -11,7 +11,14 @@ namespace TMSApi.ModelMappers
     {
         public Comment ConverToDbModel(ApiComment ApiModel)
         {
-            throw new NotImplementedException();
+            return new Comment()
+            {
+                CommentText = ApiModel.CommentText,
+                CommentTypeId = 1,
+                DateAdded = ApiModel.DateAdded,
+                ReminderDate = ApiModel.ReminderDate,
+                TaskId = ApiModel.TaskId
+            };
         }
 
         public ApiComment ConvertToApiModel(Comment Model)

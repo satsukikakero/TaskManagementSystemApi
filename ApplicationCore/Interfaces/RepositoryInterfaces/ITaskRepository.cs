@@ -10,5 +10,7 @@ namespace ApplicationCore.Interfaces.RepositoryInterfaces
         IEnumerable<TaskType> GetAllTaskTypes();
         IEnumerable<TaskStatus> GetTaskStatuses();
         IEnumerable<User> GetAllAssigniesForTask(Task task);
+        IEnumerable<Task> GetAllEager();
+        Task GetByIDEager(int id);
     }
 }

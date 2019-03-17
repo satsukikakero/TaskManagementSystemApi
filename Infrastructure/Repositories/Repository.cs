@@ -32,12 +32,14 @@ namespace Infrastructure.Repositories
         public virtual void Insert(TEntity entity)
         {
             _dbSet.Add(entity);
+            _context.SaveChanges();
         }
 
         public virtual void DeleteByid(object id)
         {
             TEntity entityToDelete = _dbSet.Find(id);
             Delete(entityToDelete);
+            _context.SaveChanges();
         }
 
         public virtual void Delete(TEntity entityToDelete)
@@ -47,6 +49,7 @@ namespace Infrastructure.Repositories
                 _dbSet.Attach(entityToDelete);
             }
             _dbSet.Remove(entityToDelete);
+            _context.SaveChanges();
         }
 
         public virtual void Update(TEntity entityToUpdate)

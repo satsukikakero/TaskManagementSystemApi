@@ -21,13 +21,24 @@ namespace TMSApi.ModelMappers
 
         public Task ConverToDbModel(ApiTask ApiModel)
         {
-            throw new NotImplementedException();
+            return new Task()
+            {
+                RequiredByDate = ApiModel.RequestByDate,
+                CreateDate = ApiModel.CreateDate,
+                TaskDetails = new TaskDetails()
+                {
+                    StatusId = ApiModel.StatusId,
+                    TypeId = ApiModel.TypeId,
+                    Description = ApiModel.Description
+                }
+            };
         }
 
         public ApiTask ConvertToApiModel(Task Model)
         {
             return new ApiTask()
             {
+                TaskId = Model.Id,
                 CreateDate = Model.CreateDate,
                 Description = Model.TaskDetails.Description,
                 RequestByDate = Model.RequiredByDate,

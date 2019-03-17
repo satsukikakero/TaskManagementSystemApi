@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using ApplicationCore.Entities;
 using ApplicationCore.Interfaces.RepositoryInterfaces;
@@ -14,6 +16,11 @@ namespace ApplicationCore.Services
         public TaskService(ITaskRepository taskRepository)
         {
             _taskRepository = taskRepository ?? throw new ArgumentNullException(nameof(taskRepository));
+        }
+
+        public virtual IEnumerable<Task> GetAllEager()
+        {
+            return _taskRepository.GetAllEager();
         }
 
         public void Delete(Task task)
@@ -38,7 +45,7 @@ namespace ApplicationCore.Services
 
         public IEnumerable<TaskType> GetAllTaskTypes()
         {
-            return GetAllTaskTypes();
+            return _taskRepository.GetAllTaskTypes();
         }
 
         public Task GetById(int id)
@@ -59,6 +66,11 @@ namespace ApplicationCore.Services
         public void Update(Task task)
         {
             _taskRepository.Update(task);
+        }
+
+        public Task GetByIdEager(int id)
+        {
+            return _taskRepository.GetByIDEager(id);
         }
     }
 }

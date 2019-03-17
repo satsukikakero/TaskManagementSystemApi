@@ -13,7 +13,7 @@ namespace ApplicationCore.Interfaces.ServiceInterfaces
         void DeleteById(int id);
         void Delete(Comment comment);
         void Update(Comment comment);
-        IEnumerable<Comment> GetAllCommentForTask(Task task);
+        IEnumerable<Comment> GetAllCommentForTask(int id);
         IEnumerable<CommentType> GetCommentTypes();
     }
 }

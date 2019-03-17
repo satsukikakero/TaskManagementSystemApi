@@ -11,6 +11,7 @@ namespace TMSApi.ApiModels
         public DateTime DateAdded { get; set; }
         public string CommentText { get; set; }
         public string CommentType { get; set; }
+        public int TaskId { get; set; }
         public DateTime? ReminderDate { get; set; }
     }
 }
